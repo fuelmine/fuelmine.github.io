@@ -66,3 +66,8 @@ main section { margin: 48px 0; scroll-margin-top: 16px; }
 .entry ul { margin: 8px 0 0; padding-left: 1.2em; }
 .when, .muted { color: var(--muted); font-size: .9rem; }
 .card h3 { font-size: 1.15rem; margin: 0; }
+.skillrow { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.skillrow strong { min-width: 8.5em; }
+.bullets { margin: 0; padding-left: 1.1em; color: var(--muted); font-size: .93rem; }
+.card.featured { grid-column: span 1; }
+@media (min-width: 720px) { .card.featured { grid-column: span 2; } }

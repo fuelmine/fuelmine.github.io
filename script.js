@@ -55,8 +55,17 @@ fill("education", SITE.education, (e) => {
   return c;
 });
 
+fill("skills", SITE.skills, (g) => {
+  const c = el("div", "skillrow");
+  c.append(el("strong", "", g.label));
+  const row = el("div", "tags");
+  g.items.forEach((t) => row.append(el("span", "tag", t)));
+  c.append(row);
+  return c;
+});
+
 // ---- nav (only visible sections) ----
-const order = [["about", "About"], ["experience", "Experience"], ["projects", "Projects"], ["achievements", "Achievements"], ["education", "Education"]];
+const order = [["about", "About"], ["experience", "Experience"], ["projects", "Projects"], ["achievements", "Achievements"], ["skills", "Skills"], ["education", "Education"]];
 $("nav").append(...order.filter(([id]) => !$(id).hidden).map(([id, t]) => link(t, "#" + id)));
 
 // ---- projects ----
@@ -83,7 +92,14 @@ function renderGrid() {
     ...list.map((p) => {
       const card = el("article", "card" + (p.featured ? " featured" : ""));
       if (p.featured) card.append(el("span", "badge", "Featured"));
-      card.append(el("h3", "", p.title), el("p", "", p.summary));
+      card.append(el("h3", "", p.title));
+      if (p.dates) card.append(el("span", "when", p.dates));
+      card.append(el("p", "", p.summary));
+      if (p.bullets) {
+        const ul = el("ul", "bullets");
+        p.bullets.forEach((b) => ul.append(el("li", "", b)));
+        card.append(ul);
+      }
       const row = el("div", "tags");
       p.tags.forEach((t) => row.append(el("span", "tag", t)));
       card.append(row);
