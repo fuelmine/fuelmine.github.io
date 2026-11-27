@@ -1,0 +1,48 @@
+:root {
+  --bg: #fafaf9; --fg: #1c1917; --muted: #57534e; --card: #fff;
+  --line: #e7e5e4; --accent: #2563eb; --accent-fg: #fff; --tag: #f0efed;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131211; --fg: #f5f5f4; --muted: #a8a29e; --card: #1c1a19;
+    --line: #2e2b29; --accent: #60a5fa; --accent-fg: #0b1220; --tag: #292524;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+.hero { padding: 72px 0 40px; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin: 0 0 8px; letter-spacing: -0.02em; }
+.lede { color: var(--muted); font-size: 1.15rem; max-width: 36em; margin: 0 0 24px; }
+.btn {
+  display: inline-block; background: var(--accent); color: var(--accent-fg);
+  padding: 10px 18px; border-radius: 8px; text-decoration: none; font-weight: 600;
+}
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 24px; }
+.chip {
+  font: inherit; cursor: pointer; padding: 6px 14px; border-radius: 999px;
+  border: 1px solid var(--line); background: var(--card); color: var(--fg);
+}
+.chip.on { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); }
+.card {
+  position: relative; display: flex; flex-direction: column; gap: 8px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px;
+  transition: transform .15s, border-color .15s;
+}
+.card:hover { transform: translateY(-2px); border-color: var(--accent); }
+.card.featured { border-color: var(--accent); }
+.card h2 { font-size: 1.15rem; margin: 0; }
+.card p { margin: 0; color: var(--muted); flex: 1; }
+.badge {
+  align-self: flex-start; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--accent);
+}
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tag { background: var(--tag); border-radius: 6px; padding: 2px 8px; font-size: .8rem; color: var(--muted); }
+.link { color: var(--accent); font-weight: 600; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+.foot { padding: 48px 16px; color: var(--muted); }
