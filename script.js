@@ -111,3 +111,26 @@ function renderGrid() {
 
 renderFilters();
 renderGrid();
+
+// ---- polish: scroll reveal + active nav link ----
+const io = "IntersectionObserver" in window
+  ? new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { const t = e.target; t.classList.add("in"); io.unobserve(t); setTimeout(() => { t.classList.remove("reveal", "in"); t.style.transitionDelay = ""; }, 1000); } }), { rootMargin: "0px 0px -8% 0px" })
+  : null;
+function reveal(root) {
+  root.querySelectorAll(".entry, .card, .skillrow, .about, .sec").forEach((n, i) => {
+    if (n.classList.contains("reveal")) return;
+    n.classList.add("reveal");
+    n.style.transitionDelay = Math.min(i % 6, 5) * 50 + "ms";
+    io ? io.observe(n) : n.classList.add("in");
+  });
+}
+reveal(document);
+new MutationObserver(() => reveal(grid)).observe(grid, { childList: true });
+
+const navLinks = [...document.querySelectorAll("#nav a")];
+if ("IntersectionObserver" in window && navLinks.length) {
+  const spy = new IntersectionObserver((es) => es.forEach((e) => {
+    if (e.isIntersecting) navLinks.forEach((a) => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id));
+  }), { rootMargin: "-40% 0px -55% 0px" });
+  document.querySelectorAll("main section:not([hidden])").forEach((s) => spy.observe(s));
+}
