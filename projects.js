@@ -72,9 +72,3 @@ const PROJECTS = [
     repo: "https://github.com/fuelmine/SFML-Practice",
   },
 ];
-
-const SITE = {
-  name: "fuelmine",
-  tagline: "I build C++ projects in quantitative finance, games, and data structures.",
-  github: "https://github.com/fuelmine",
-};

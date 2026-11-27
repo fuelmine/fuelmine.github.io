@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects · fuelmine</title>
-  <meta name="description" content="A collection of my C++ projects.">
+  <title>Portfolio · fuelmine</title>
+  <meta name="description" content="Portfolio: projects, experience, education and achievements.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,17 +12,27 @@
     <div class="wrap">
       <h1 id="name"></h1>
       <p id="tagline" class="lede"></p>
-      <a id="gh" class="btn" rel="noopener">GitHub profile →</a>
+      <div id="links" class="links"></div>
     </div>
   </header>
 
+  <nav id="nav" class="nav wrap" aria-label="Sections"></nav>
+
   <main class="wrap">
-    <nav id="filters" class="filters" aria-label="Filter projects"></nav>
-    <section id="grid" class="grid" aria-live="polite"></section>
+    <section id="about" hidden><h2 class="sec">About</h2><div id="about-body"></div></section>
+    <section id="experience" hidden><h2 class="sec">Experience</h2><div id="experience-body" class="stack"></div></section>
+    <section id="projects">
+      <h2 class="sec">Projects</h2>
+      <nav id="filters" class="filters" aria-label="Filter projects"></nav>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+    <section id="achievements" hidden><h2 class="sec">Achievements</h2><div id="achievements-body" class="stack"></div></section>
+    <section id="education" hidden><h2 class="sec">Education</h2><div id="education-body" class="stack"></div></section>
   </main>
 
   <footer class="wrap foot"><small>Built with plain HTML, CSS, and JS.</small></footer>
 
+  <script src="content.js"></script>
   <script src="projects.js"></script>
   <script src="script.js"></script>
 </body>
